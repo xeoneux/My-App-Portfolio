@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +32,15 @@ public class MainActivity extends AppCompatActivity {
         applications.add("Go Ubiquitous");
         applications.add("Capstone");
 
-        for (String application : applications) {
+        for (final String application : applications) {
             Button button = new Button(this);
             button.setText(application);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getApplicationContext(), application, Toast.LENGTH_SHORT).show();
+                }
+            });
 
             linearLayout.addView(button);
         }
